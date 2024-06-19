@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="AProyecto2.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:AProyecto2"
+    xmlns:views="clr-namespace:AProyecto2.Views"
+    Shell.FlyoutBehavior="Disabled"
+    Title="AProyecto2">
+
+    <!-- Encabezado personalizado -->
+    <Shell.TitleView>
+        <Grid VerticalOptions="Center" Padding="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Logo -->
+            <Image Source="logo.jpg" HeightRequest="55" WidthRequest="90" VerticalOptions="Center" Grid.Column="0" />
+
+            <!-- Teléfono -->
+            <Label Text="Teléfono: 0969088003" FontSize="16" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="1" />
+
+            <!-- Ubicación -->
+            <Label Text="Quito - Ecuador" FontSize="16" VerticalOptions="Center" HorizontalOptions="End" Grid.Column="2" />
+        </Grid>
+    </Shell.TitleView>
+
+    <!-- Tab Bar -->
+    <TabBar>
+        <Tab Title="Home" Icon="home.png">
+            <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
+        </Tab>
+        <Tab Title="Nosotros" Icon="nosotros.jpg">
+            <ShellContent ContentTemplate="{DataTemplate views:Nosotros}" />
+        </Tab>
+        <Tab Title="Promociones" Icon="promocion.png">
+            <ShellContent ContentTemplate="{DataTemplate views:Promociones}" />
+        </Tab>
+        <Tab Title="Tienda" Icon="tienda.png">
+            <ShellContent ContentTemplate="{DataTemplate views:Tienda}" />
+        </Tab>
+        <Tab Title="Contactos" Icon="contacto.png">
+            <ShellContent ContentTemplate="{DataTemplate views:Contactos}" />
+        </Tab>
+        <Tab Title="Registro" Icon="regi.jpg">
+            <ShellContent ContentTemplate="{DataTemplate views:Registro}" />
+        </Tab>
+    </TabBar>
+</Shell>

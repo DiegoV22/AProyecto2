@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AProyecto2.Views.Tienda"
+             Title="Tienda"
+             BackgroundColor="#E0F7FA">
+    <ScrollView>
+        <VerticalStackLayout Padding="20,10" Spacing="20">
+            <!-- Título -->
+            <Frame BackgroundColor="White" CornerRadius="10" Padding="10" Margin="20,0">
+                <Label
+                    Text="Tienda"
+                    FontSize="26"
+                    FontAttributes="Bold"
+                    TextColor="#333"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center" />
+            </Frame>
+
+            <!-- Entrada de Nombre del Peluche -->
+            <Entry x:Name="NombreEntry" Placeholder="Nombre del Peluche" FontSize="18" TextColor="#333" />
+
+            <!-- Entrada de Tamaño del Peluche -->
+            <Entry x:Name="TamanoEntry" Placeholder="Tamaño del Peluche" FontSize="18" TextColor="#333" />
+
+            <!-- Entrada de Precio del Peluche -->
+            <Entry x:Name="PrecioEntry" Placeholder="Precio del Peluche" FontSize="18" TextColor="#333" Keyboard="Numeric" />
+
+            <!-- Selector de Fecha -->
+            <DatePicker x:Name="FechaPicker" FontSize="18" TextColor="#333" />
+
+            <!-- Botón de Confirmar Venta -->
+            <Button Text="Confirmar Venta" FontSize="18" TextColor="White" BackgroundColor="#007ACC" Clicked="OnConfirmarVentaClicked" />
+
+            <!-- Lista de Ventas Confirmadas -->
+            <CollectionView x:Name="VentasCollectionView" ItemsSource="{Binding Ventas}" SelectionMode="Single" SelectionChanged="OnVentaSeleccionada" Margin="0,20,0,0">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="2" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BackgroundColor="White" CornerRadius="10" Padding="10" Margin="5">
+                            <VerticalStackLayout>
+                                <Image Source="{Binding Imagen}" HeightRequest="100" Aspect="AspectFit" HorizontalOptions="Center" />
+                                <Label Text="{Binding Nombre}" FontSize="16" TextColor="#333" HorizontalOptions="Center" />
+                                <Label Text="{Binding Tamano}" FontSize="14" TextColor="#666" HorizontalOptions="Center" />
+                                <Label Text="{Binding Precio}" FontSize="14" TextColor="#666" HorizontalOptions="Center" />
+                            </VerticalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

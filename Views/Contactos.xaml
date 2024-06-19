@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:AProyecto2.Views"
+             x:Class="AProyecto2.Views.Contactos"
+             Title="Contactos"
+             BackgroundImageSource="fondo.jpg">
+    <!-- Fondo de imagen -->
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20,10" Spacing="20">
+            <!-- Título -->
+            <Frame BackgroundColor="White" CornerRadius="10" Padding="10" Margin="20,0">
+                <Label
+                    Text="Contactanos"
+                    FontSize="26"
+                    FontAttributes="Bold"
+                    TextColor="#333"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center" />
+            </Frame>
+
+            <!-- Cuadros de contacto -->
+            <CollectionView x:Name="collectionView" ItemsLayout="VerticalList">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BackgroundColor="White" Opacity="0.8" CornerRadius="10" Padding="10" Margin="5">
+                            <HorizontalStackLayout>
+                                <Image Source="{Binding Image}" HeightRequest="100" Aspect="AspectFit" />
+                                <VerticalStackLayout>
+                                    <Label Text="{Binding Text1}" FontSize="16" TextColor="#333" />
+                                    <Label Text="{Binding Text2}" FontSize="14" TextColor="#666" />
+                                    <Label Text="{Binding Text3}" FontSize="14" TextColor="#666" />
+                                </VerticalStackLayout>
+                            </HorizontalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!-- Pie de página -->
+            <StackLayout HorizontalOptions="Center" VerticalOptions="End" Padding="10" Orientation="Horizontal">
+                <Image Source="instagram.png" HeightRequest="24" WidthRequest="24" VerticalOptions="Center">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="OnInstagramTapped" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label Text="Mundo Peluche" FontSize="16" VerticalOptions="Center" HorizontalOptions="Start" Margin="5,0,0,0" TextColor="#333" />
+            </StackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
+

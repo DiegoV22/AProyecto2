@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AProyecto2.Views.Nosotros"
+             Title="Nosotros">
+    <Grid>
+        <!-- Fondo de imagen -->
+        <Image Source="fondo.jpg" Aspect="Fill"  Opacity="0.15" />
+
+        <!-- Contenido de la página -->
+        <ScrollView>
+            <VerticalStackLayout Padding="20,10" Spacing="20">
+                <!-- Título -->
+                <Frame BackgroundColor="White" CornerRadius="10" Padding="10" Margin="20,0" HasShadow="True">
+                    <Label
+                        Text="Sobre Nosotros"
+                        FontSize="26"
+                        FontAttributes="Bold"
+                        TextColor="#333"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center" />
+                </Frame>
+
+                <!-- Texto descriptivo -->
+                <Frame BackgroundColor="White" CornerRadius="10" Padding="15" HasShadow="True">
+                    <Label
+                        Text="Esta aventura empezó desde el año 2003, a lo largo de este tiempo hemos crecido de la mano de nuestros clientes. Hoy en día, somos un grupo de trabajo creativo y competente dedicado a la fabricación de peluches, cojines y promocionales textiles. Nuestra amplia experiencia nos capacita para plasmar cualquier idea corporativa o publicitaria a través del diseño y fabricación de muñecos que proyecten e impulsen la imagen de su empresa mediante productos de calidad, los cuales han hecho posible el reconocimiento en el mercado nacional e internacional.
+                        
+                        Trabajamos con maquinaria de alta tecnología, importamos nuestra materia prima de la mejor calidad, contamos con personal calificado y experimentado. Tenemos la capacidad para fabricar en grandes cantidades garantizando la efectividad, rapidez, calidad y, sobre todo, seriedad en las entregas con precios competitivos."
+                        FontSize="16"
+                        TextColor="#333"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center" />
+                </Frame>
+
+                <!-- Sección de misión y visión con imágenes -->
+                <HorizontalStackLayout Spacing="20" HorizontalOptions="Center">
+                    <!-- Imagen y Misión -->
+                    <VerticalStackLayout HorizontalOptions="Center" WidthRequest="200">
+                        <Frame CornerRadius="20" HasShadow="True" Padding="10" BackgroundColor="White">
+                            <Image
+                                Source="vision.jpg"
+                                HeightRequest="150"
+                                Aspect="AspectFit"
+                                HorizontalOptions="Center" />
+                        </Frame>
+                        <Frame BackgroundColor="White" CornerRadius="10" Padding="10" Margin="10,0" HasShadow="True">
+                            <Label
+                                Text="Visión:
+                                
+                                Nuestra visión es lograr convertirnos en la primera empresa de producción y comercialización de muñecos de peluche para consolidarnos en el mercado nacional e internacional y estar a la vanguardia de las nuevas tendencias y tecnologías, teniendo como objetivo principal la satisfacción de nuestros clientes."
+                                FontSize="16"
+                                TextColor="#333"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center" />
+                        </Frame>
+                    </VerticalStackLayout>
+
+                    <!-- Imagen y Visión -->
+                    <VerticalStackLayout HorizontalOptions="Center" WidthRequest="200">
+                        <Frame CornerRadius="20" HasShadow="True" Padding="10" BackgroundColor="White">
+                            <Image
+                                Source="mision.jpg"
+                                HeightRequest="150"
+                                Aspect="AspectFit"
+                                HorizontalOptions="Center" />
+                        </Frame>
+                        <Frame BackgroundColor="White" CornerRadius="10" Padding="10" Margin="10,0" HasShadow="True">
+                            <Label
+                                Text="Misión:
+                                
+                                Nuestra misión es desarrollar productos para despertar y expresar sentimientos, ofreciendo una amplia gama de diseños y modelos novedosos de alta calidad, brindando una atención eficiente a nuestros clientes, cuidando siempre nuestros estándares de calidad, servicio e innovación."
+                                FontSize="16"
+                                TextColor="#333"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center" />
+                        </Frame>
+                    </VerticalStackLayout>
+                </HorizontalStackLayout>
+
+                <!-- Pie de página -->
+                <StackLayout HorizontalOptions="Center" VerticalOptions="End" Padding="10" Orientation="Horizontal">
+                    <Image Source="instagram.png" HeightRequest="24" WidthRequest="24" VerticalOptions="Center">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Tapped="OnInstagramTapped" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label Text="Mundo Peluche" FontSize="16" VerticalOptions="Center" HorizontalOptions="Start" Margin="5,0,0,0" TextColor="#333" />
+                </StackLayout>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

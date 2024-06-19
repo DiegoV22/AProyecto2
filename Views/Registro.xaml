@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AProyecto2.Views.Registro"
+             Title="Registro"
+             BackgroundColor="DarkGray">
+
+
+    <VerticalStackLayout Padding="20">
+        <!-- Título -->
+        <Label 
+            Text="Crear contacto"
+            FontSize="24"
+            FontAttributes="Bold"
+            HorizontalOptions="Center"
+            VerticalOptions="CenterAndExpand" />
+
+        <!-- Formulario -->
+        <StackLayout Spacing="10">
+            <!-- Nombre -->
+            <Entry Placeholder="Nombre" x:Name="entryNombre" />
+
+            <!-- Apellido -->
+            <Entry Placeholder="Apellido" x:Name="entryApellido" />
+
+            <!-- Teléfono -->
+            <Entry Placeholder="Teléfono" x:Name="entryTelefono" Keyboard="Telephone" />
+
+            <!-- Correo Electrónico -->
+            <Entry Placeholder="Correo Electrónico" x:Name="entryCorreo" Keyboard="Email" />
+
+            <!-- Dirección -->
+            <Entry Placeholder="Dirección" x:Name="entryDireccion" />
+
+            <!-- Fecha -->
+            <DatePicker x:Name="datePickerFecha" />
+
+            <!-- Botón de Confirmar -->
+            <Button Text="Confirmar" Clicked="OnConfirmarClicked" HorizontalOptions="Center" />
+        </StackLayout>
+    </VerticalStackLayout>
+</ContentPage>

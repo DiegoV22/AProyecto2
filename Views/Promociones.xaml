@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:AProyecto2.Views"
+             x:Class="AProyecto2.Views.Promociones"
+             Title="Promociones"
+             BackgroundColor="Beige">
+    <ScrollView>
+        <VerticalStackLayout Padding="30,10" Spacing="30">
+            <!-- Título -->
+            <Frame BackgroundColor="White" CornerRadius="10" Padding="10" Margin="20,0">
+                <Label
+                    Text="Promociones"
+                    FontSize="26"
+                    FontAttributes="Bold"
+                    TextColor="#333"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center" />
+            </Frame>
+
+            <!-- Primer carrusel de fotos con texto de descuento -->
+            <VerticalStackLayout>
+                <!-- Texto de descuento del 50% -->
+                <Frame BackgroundColor="#FFEBEE" CornerRadius="20" Padding="10" Margin="0,10,0,0" HasShadow="True">
+                    <Label
+                        Text="Peluches en 50% de descuento"
+                        FontSize="20"
+                        FontAttributes="Bold"
+                        TextColor="#D32F2F"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center" />
+                </Frame>
+
+                <CarouselView HeightRequest="300" ItemsSource="{Binding Promotions50}">
+                    <CarouselView.ItemTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding ImageUrl}" Aspect="AspectFit" />
+                        </DataTemplate>
+                    </CarouselView.ItemTemplate>
+                </CarouselView>
+            </VerticalStackLayout>
+
+            <!-- Segundo carrusel de fotos con texto de descuento -->
+            <VerticalStackLayout>
+                <!-- Texto de descuento del 25% -->
+                <Frame BackgroundColor="#FFF3E0" CornerRadius="20" Padding="10" Margin="0,10,0,0" HasShadow="True">
+                    <Label
+                        Text="Peluches en 25% de descuento"
+                        FontSize="20"
+                        FontAttributes="Bold"
+                        TextColor="#F57C00"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center" />
+                </Frame>
+
+                <CarouselView HeightRequest="300" ItemsSource="{Binding Promotions25}">
+                    <CarouselView.ItemTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding ImageUrl}" Aspect="AspectFit" />
+                        </DataTemplate>
+                    </CarouselView.ItemTemplate>
+                </CarouselView>
+            </VerticalStackLayout>
+
+            <!-- Pie de página -->
+            <StackLayout HorizontalOptions="Center" VerticalOptions="End" Padding="10" Orientation="Horizontal">
+                <Image Source="instagram.png" HeightRequest="24" WidthRequest="24" VerticalOptions="Center">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="OnInstagramTapped" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label Text="Mundo Peluche" FontSize="16" VerticalOptions="Center" HorizontalOptions="Start" Margin="5,0,0,0" TextColor="#333" />
+            </StackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
