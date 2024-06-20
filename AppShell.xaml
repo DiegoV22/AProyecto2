@@ -48,5 +48,8 @@
         <Tab Title="Registro" Icon="regi.jpg">
             <ShellContent ContentTemplate="{DataTemplate views:Registro}" />
         </Tab>
+        <Tab Title="Lista de Contactos" Icon="lista.png">
+            <ShellContent ContentTemplate="{DataTemplate views:ContactosListPage}" />
+        </Tab>
     </TabBar>
 </Shell>

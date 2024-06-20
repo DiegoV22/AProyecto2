@@ -1,14 +1,30 @@
 using Microsoft.Maui.Controls;
 using System;
 using System.IO;
+using System.Linq;
 
 namespace AProyecto2.Views
 {
     public partial class Registro : ContentPage
     {
-        public Registro()
+        private Contacto currentContacto;
+        private ContactosListPage contactosListPage;
+
+        public Registro(ContactosListPage contactosListPage, Contacto contacto = null)
         {
             InitializeComponent();
+            this.contactosListPage = contactosListPage;
+
+            if (contacto != null)
+            {
+                currentContacto = contacto;
+                entryNombre.Text = contacto.Nombre;
+                entryApellido.Text = contacto.Apellido;
+                entryTelefono.Text = contacto.Telefono;
+                entryCorreo.Text = contacto.Correo;
+                entryDireccion.Text = contacto.Direccion;
+                datePickerFecha.Date = DateTime.Parse(contacto.Fecha);
+            }
         }
 
         private async void OnConfirmarClicked(object sender, EventArgs e)
@@ -25,72 +41,45 @@ namespace AProyecto2.Views
             }
 
             // Crear un objeto de contacto con la información ingresada
-            Contacto nuevoContacto = new Contacto
+            if (currentContacto == null)
             {
-                Nombre = entryNombre.Text,
-                Apellido = entryApellido.Text,
-                Telefono = entryTelefono.Text,
-                Correo = entryCorreo.Text,
-                Direccion = entryDireccion.Text,
-                Fecha = datePickerFecha.Date.ToString("dd/MM/yyyy")
-            };
+                currentContacto = new Contacto();
+            }
 
-            // Guardar el contacto en un archivo en el escritorio del usuario
-            bool success = GuardarContactoEnEscritorio(nuevoContacto);
+            currentContacto.Nombre = entryNombre.Text;
+            currentContacto.Apellido = entryApellido.Text;
+            currentContacto.Telefono = entryTelefono.Text;
+            currentContacto.Correo = entryCorreo.Text;
+            currentContacto.Direccion = entryDireccion.Text;
+            currentContacto.Fecha = datePickerFecha.Date.ToString("dd/MM/yyyy");
 
-            if (success)
+            // Guardar el contacto en la lista y el archivo
+            GuardarContacto(currentContacto);
+
+            await DisplayAlert("Éxito", "Contacto creado y guardado correctamente.", "OK");
+
+            // Volver a la página de lista de contactos
+            await Navigation.PopAsync();
+        }
+
+        private void GuardarContacto(Contacto contacto)
+        {
+            var existingContact = contactosListPage.ContactosList.FirstOrDefault(c => c.Nombre == contacto.Nombre && c.Apellido == contacto.Apellido);
+
+            if (existingContact == null)
             {
-                // Mostrar mensaje de éxito
-                await DisplayAlert("Éxito", "Contacto creado y guardado correctamente en el escritorio.", "OK");
-
-                // Limpiar los campos después de confirmar
-                LimpiarCampos();
+                contactosListPage.ContactosList.Add(contacto);
             }
             else
             {
-                // Mostrar mensaje de error
-                await DisplayAlert("Error", "No se pudo guardar el contacto en el escritorio.", "OK");
+                // Actualizar contacto existente
+                existingContact.Telefono = contacto.Telefono;
+                existingContact.Correo = contacto.Correo;
+                existingContact.Direccion = contacto.Direccion;
+                existingContact.Fecha = contacto.Fecha;
             }
-        }
 
-        private bool GuardarContactoEnEscritorio(Contacto contacto)
-        {
-            try
-            {
-                // Obtener la ruta de la carpeta de escritorio del usuario
-                string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
-
-                // Crear la ruta completa del archivo (por ejemplo, usando el nombre del contacto)
-                string filePath = Path.Combine(desktopPath, "Registro.Usuario.txt");
-
-                // Crear el contenido del archivo
-                string contenidoArchivo = $"Nombre: {contacto.Nombre}\n" +
-                                          $"Apellido: {contacto.Apellido}\n" +
-                                          $"Teléfono: {contacto.Telefono}\n" +
-                                          $"Correo: {contacto.Correo}\n" +
-                                          $"Dirección: {contacto.Direccion}\n" +
-                                          $"Fecha: {contacto.Fecha}";
-
-                // Escribir el contenido en el archivo
-                File.WriteAllText(filePath, contenidoArchivo);
-
-                return true;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error al guardar el archivo en el escritorio: {ex.Message}");
-                return false;
-            }
-        }
-
-        private void LimpiarCampos()
-        {
-            entryNombre.Text = string.Empty;
-            entryApellido.Text = string.Empty;
-            entryTelefono.Text = string.Empty;
-            entryCorreo.Text = string.Empty;
-            entryDireccion.Text = string.Empty;
-            datePickerFecha.Date = DateTime.Now;
+            contactosListPage.SaveContacts();
         }
     }
 

@@ -117,6 +117,9 @@
 	  <MauiXaml Update="Views\Contactos.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\ContactosListPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\Nosotros.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

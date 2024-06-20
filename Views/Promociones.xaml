@@ -40,9 +40,7 @@
                 </CarouselView>
             </VerticalStackLayout>
 
-            <!-- Segundo carrusel de fotos con texto de descuento -->
             <VerticalStackLayout>
-                <!-- Texto de descuento del 25% -->
                 <Frame BackgroundColor="#FFF3E0" CornerRadius="20" Padding="10" Margin="0,10,0,0" HasShadow="True">
                     <Label
                         Text="Peluches en 25% de descuento"
